@@ -26,3 +26,6 @@ C:\CustomProjects\LM2\EvershadeTextures\EvershadeTextures\bin\Debug\net8.0-windo
 C:\CustomProjects\LM2\EvershadeTextures\EvershadeTextures\obj\Debug\net8.0-windows\EvershadeTextures.csproj.AssemblyReference.cache
 C:\CustomProjects\LM2\EvershadeTextures\EvershadeTextures\obj\Debug\net8.0-windows\EvershadeTextures_Content.g.cs
 C:\CustomProjects\LM2\EvershadeTextures\EvershadeTextures\obj\Debug\net8.0-windows\Evershad.2E4D688C.Up2Date
+C:\CustomProjects\LM2\EvershadeTextures\EvershadeTextures\obj\Debug\net8.0-windows\Images\Icons.baml
+C:\CustomProjects\LM2\EvershadeTextures\EvershadeTextures\obj\Debug\net8.0-windows\EvershadeTextures.sourcelink.json
+C:\CustomProjects\LM2\EvershadeTextures\EvershadeTextures\bin\Debug\net8.0-windows\EvershadeTextures.dll.config

@@ -15,6 +15,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Runtime.InteropServices;
+using System.Windows.Interop;
+using System.Reflection.Emit;
+using System.ComponentModel;
 
 namespace EvershadeTextures {
     /// <summary>
@@ -40,6 +44,7 @@ namespace EvershadeTextures {
             IndexTextboxIsUserChange = true;
 
             PreviewTextureImage.Source = DataFile.Textures[SelectedTextureIndex].PreviewTexture;
+            PreviewTextureInfo.Text = DataFile.Textures[SelectedTextureIndex].GetFormatedMetadata();
 
             if (scrollToIndex) {
                 TextureListScroll.ScrollToVerticalOffset(index * 100);
@@ -50,6 +55,7 @@ namespace EvershadeTextures {
             SaveFileButton.IsEnabled = enable;
             SaveFileAsButton.IsEnabled = enable;
             ImportButton.IsEnabled = enable;
+            AutoImportButton.IsEnabled = false;
             ExportButton.IsEnabled = enable;
             ExportAllButton.IsEnabled = enable;
         }
@@ -58,9 +64,17 @@ namespace EvershadeTextures {
             DragMove();
         }
 
+        private void TitleButtonMinimize(object sender, RoutedEventArgs e) {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void TitleButtonClose(object sender, RoutedEventArgs e) {
+            Application.Current.Shutdown();
+        }
+
         private void ClickOpenFileButton(object sender, RoutedEventArgs e) {
             OpenFileDialog fileDialog = new();
-            fileDialog.Filter = "Data files (*.data)|*.data";
+            fileDialog.Filter = "Data files|*.data";
             bool? dialogResult = fileDialog.ShowDialog();
 
             if (dialogResult == true) {
@@ -75,6 +89,7 @@ namespace EvershadeTextures {
                     ToggleFileOptions(true);
                 } else {
                     PreviewTextureImage.Source = null;
+                    PreviewTextureInfo.Text = String.Empty;
                     ToggleFileOptions(false);
                 }
 
@@ -93,7 +108,7 @@ namespace EvershadeTextures {
 
         private void ClickSaveFileAsButton(object sender, RoutedEventArgs e) {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Data files (*.data)|*.data";
+            saveFileDialog.Filter = "Data files|*.data";
             bool? result = saveFileDialog.ShowDialog();
 
             if (result == true) {
@@ -106,7 +121,7 @@ namespace EvershadeTextures {
             int index = SelectedTextureIndex;
 
             OpenFileDialog fileDialog = new();
-            fileDialog.Filter = "DirectDraw Surface (*.dds)|*.dds";
+            fileDialog.Filter = "DirectDraw Surface|*.dds";
             bool? dialogResult = fileDialog.ShowDialog();
 
             if (dialogResult == true) {
@@ -120,7 +135,7 @@ namespace EvershadeTextures {
             int index = SelectedTextureIndex;
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "DirectDraw Surface (*.dds)|*.dds";
+            saveFileDialog.Filter = "DirectDraw Surface|*.dds";
             bool? result = saveFileDialog.ShowDialog();
 
             if (result == true) {
@@ -142,7 +157,7 @@ namespace EvershadeTextures {
             }
         }
 
-       private void UpdateTextureListPanel() {
+        private void UpdateTextureListPanel() {
             TextureListPanel.Children.Clear();
 
             for (int index = 0; index < DataFile.Textures.Count; index++) {

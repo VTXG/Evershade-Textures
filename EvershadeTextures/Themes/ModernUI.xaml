@@ -23,6 +23,35 @@
         </Setter>
     </Style>
 
+    <ControlTemplate x:Key="ModernScrollBar" TargetType="ScrollBar">
+        <Track Name="PART_Track"
+               Margin="-8,0,0,0"
+               IsDirectionReversed="True">
+            <Track.Thumb>
+                <Thumb HorizontalAlignment="Stretch">
+                    <Thumb.Style>
+                        <Style TargetType="Thumb">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Thumb">
+                                        <Grid>
+                                            <Border Background="{StaticResource ElementBrush}"
+                                                    BorderBrush="{StaticResource FocusBrush}"
+                                                    Width="12"
+                                                    Margin="0,8,0,18"
+                                                    CornerRadius="4"
+                                                    BorderThickness="1"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Thumb.Style>
+                </Thumb>
+            </Track.Thumb>
+        </Track>
+    </ControlTemplate>
+
     <Style x:Key="ModernButton" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource ButtonBrush}"/>
         <Setter Property="Foreground" Value="White"/>
@@ -56,33 +85,60 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    <ControlTemplate x:Key="ModernScrollBar" TargetType="ScrollBar">
-        <Track Name="PART_Track"
-               Margin="-8,0,0,0"
-               IsDirectionReversed="True">
-            <Track.Thumb>
-                <Thumb HorizontalAlignment="Stretch">
-                    <Thumb.Style>
-                        <Style TargetType="Thumb">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="Thumb">
-                                        <Grid>
-                                            <Border Background="{StaticResource ElementBrush}"
-                                                    BorderBrush="{StaticResource FocusBrush}"
-                                                    Width="12"
-                                                    Margin="0,8,0,18"
-                                                    CornerRadius="4"
-                                                    BorderThickness="1"/>
-                                        </Grid>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </Thumb.Style>
-                </Thumb>
-            </Track.Thumb>
-        </Track>
-    </ControlTemplate>
+
+    <Style x:Key="TitleCloseButton" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="{StaticResource FocusBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            CornerRadius="0,5,0,0"
+                            BorderThickness="0"
+                            IsEnabled="{TemplateBinding IsEnabled}">
+                        <ContentPresenter HorizontalAlignment="Stretch" 
+                                          VerticalAlignment="Stretch"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{StaticResource FocusBrush}"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource ElementBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF0000"/>
+                            <Setter Property="BorderBrush" Value="#FF0000"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TitleButton" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="{StaticResource FocusBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            CornerRadius="0"
+                            BorderThickness="0"
+                            IsEnabled="{TemplateBinding IsEnabled}">
+                        <ContentPresenter HorizontalAlignment="Stretch" 
+                                      VerticalAlignment="Stretch"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource FocusBrush}"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource FocusBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

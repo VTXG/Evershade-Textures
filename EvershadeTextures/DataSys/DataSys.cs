@@ -47,7 +47,7 @@ namespace EvershadeTexture.DataSys {
             byte[] data = File.ReadAllBytes(path);
 
             if (data.Length != Textures[index].Data.Length) {
-                MessageBox.Show("Imported texture does not have the same size.", "Importing Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Imported texture does not have the same byte size.", "Importing Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -66,8 +66,8 @@ namespace EvershadeTexture.DataSys {
                     memoryStream.Seek(84, SeekOrigin.Begin);
                     memoryStream.Read(compression, 0, 4);
 
-                    if (compression.ToString() == TextureMetadata.DXT1.ToString()) { } else
-                    if (compression.ToString() == TextureMetadata.DXT5.ToString()) { } else
+                    if (IsByteSequence(compression, TextureMetadata.DXT1, 0)) { } else
+                    if (IsByteSequence(compression, TextureMetadata.DXT5, 0)) { } else
                     { MessageBox.Show("Only DXT1 (BC1) and DXT5 (BC3) encoding formats are supported.", "Importing Error", MessageBoxButton.OK, MessageBoxImage.Error); return;  }
 
                     memoryStream.Seek(0x47, SeekOrigin.Begin);

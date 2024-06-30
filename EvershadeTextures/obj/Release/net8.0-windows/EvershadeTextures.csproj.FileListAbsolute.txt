@@ -26,3 +26,5 @@ C:\CustomProjects\LM2\EvershadeTextures\EvershadeTextures\obj\Release\net8.0-win
 C:\CustomProjects\LM2\EvershadeTextures\EvershadeTextures\obj\Release\net8.0-windows\EvershadeTextures.pdb
 C:\CustomProjects\LM2\EvershadeTextures\EvershadeTextures\obj\Release\net8.0-windows\EvershadeTextures.genruntimeconfig.cache
 C:\CustomProjects\LM2\EvershadeTextures\EvershadeTextures\obj\Release\net8.0-windows\ref\EvershadeTextures.dll
+C:\CustomProjects\LM2\EvershadeTextures\EvershadeTextures\obj\Release\net8.0-windows\EvershadeTextures.sourcelink.json
+C:\CustomProjects\LM2\EvershadeTextures\EvershadeTextures\obj\Release\net8.0-windows\Images\Icons.baml
