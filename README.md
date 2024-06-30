@@ -10,11 +10,12 @@
 
 <br>
 <br>
-<br>
 
 # How to Use
 
 ### 0. Notes
+
+You need [.NET 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) to run this application.
 
 Imported textures need to:
 - have the same byte size as the original texture.
