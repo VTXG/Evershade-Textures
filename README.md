@@ -10,6 +10,9 @@
 
 <br>
 
+> [!WARNING]
+> With the release of [Evershade Editor](https://github.com/Gadd-Modding-Inc/Evershade-Editor), this tool is now obsolete. Use it instead of this.
+
 # How to Use
 
 ### 0. Notes
